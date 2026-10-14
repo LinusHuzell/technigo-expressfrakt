@@ -63,25 +63,25 @@ Ett okänt fraktval kastar ett eget fel:
 
 ## Kontrolltabell
 
-De förväntade värdena är ifyllda för hand utifrån kraven, innan implementationen. Fyra rader (5, 11, 12 och 13) rättades efter granskning mot kraven. Kolumnen "Faktiskt" fylls i efter körning.
+De förväntade värdena är ifyllda för hand utifrån kraven, innan implementationen. Fyra rader (5, 11, 12 och 13) rättades efter granskning mot kraven. Kolumnen "Faktiskt" fylldes i efter körning av den färdiga implementationen.
 
 | #  | Krav-ID | Varusumma | Fraktval      | Förväntat            | Faktiskt |
 | -- | ------- | --------- | ------------- | -------------------- | -------- |
-| 1  | K5      | 0         | `"standard"`  | Frakt 0, totalt 0    |          |
-| 2  | K3      | 1         | `"standard"`  | Frakt 59, totalt 60  |          |
-| 3  | K3      | 499       | `"standard"`  | Frakt 59, totalt 558 |          |
-| 4  | K3      | 500       | `"standard"`  | Frakt 0, totalt 500  |          |
-| 5  | K3      | 501       | `"standard"`  | Frakt 0, totalt 501  |          |
-| 6  | K5      | 0         | `"express"`   | Frakt 0, totalt 0    |          |
-| 7  | K4      | 1         | `"express"`   | Frakt 99, totalt 100 |          |
-| 8  | K4      | 499       | `"express"`   | Frakt 99, totalt 598 |          |
-| 9  | K4      | 500       | `"express"`   | Frakt 99, totalt 599 |          |
-| 10 | K4      | 501       | `"express"`   | Frakt 99, totalt 600 |          |
-| 11 | K2, K5  | 0         | (utelämnat)   | Frakt 0, totalt 0    |          |
-| 12 | K2      | 499       | (utelämnat)   | Frakt 59, totalt 558 |          |
-| 13 | K2      | 500       | (utelämnat)   | Frakt 0, totalt 500  |          |
-| 14 | K6      | 0         | `"overnight"` | Fel                  |          |
-| 15 | K6      | 499       | `"Express"`   | Fel                  |          |
+| 1  | K5      | 0         | `"standard"`  | Frakt 0, totalt 0    | Frakt 0, totalt 0 ✅ |
+| 2  | K3      | 1         | `"standard"`  | Frakt 59, totalt 60  | Frakt 59, totalt 60 ✅ |
+| 3  | K3      | 499       | `"standard"`  | Frakt 59, totalt 558 | Frakt 59, totalt 558 ✅ |
+| 4  | K3      | 500       | `"standard"`  | Frakt 0, totalt 500  | Frakt 0, totalt 500 ✅ |
+| 5  | K3      | 501       | `"standard"`  | Frakt 0, totalt 501  | Frakt 0, totalt 501 ✅ |
+| 6  | K5      | 0         | `"express"`   | Frakt 0, totalt 0    | Frakt 0, totalt 0 ✅ |
+| 7  | K4      | 1         | `"express"`   | Frakt 99, totalt 100 | Frakt 99, totalt 100 ✅ |
+| 8  | K4      | 499       | `"express"`   | Frakt 99, totalt 598 | Frakt 99, totalt 598 ✅ |
+| 9  | K4      | 500       | `"express"`   | Frakt 99, totalt 599 | Frakt 99, totalt 599 ✅ |
+| 10 | K4      | 501       | `"express"`   | Frakt 99, totalt 600 | Frakt 99, totalt 600 ✅ |
+| 11 | K2, K5  | 0         | (utelämnat)   | Frakt 0, totalt 0    | Frakt 0, totalt 0 ✅ |
+| 12 | K2      | 499       | (utelämnat)   | Frakt 59, totalt 558 | Frakt 59, totalt 558 ✅ |
+| 13 | K2      | 500       | (utelämnat)   | Frakt 0, totalt 500  | Frakt 0, totalt 500 ✅ |
+| 14 | K6      | 0         | `"overnight"` | Fel                  | InvalidShippingMethodError ✅ |
+| 15 | K6      | 499       | `"Express"`   | Fel                  | InvalidShippingMethodError ✅ |
 
 ## Motivering
 
