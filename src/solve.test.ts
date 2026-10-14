@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { solve } from "./solve.ts";
+import { solve } from "./solve";
 
 describe("solve", () => {
   it("ska implementeras enligt specifikationen", () => {

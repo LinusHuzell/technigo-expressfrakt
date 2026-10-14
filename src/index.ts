@@ -1,3 +1,3 @@
-import { solve } from "./solve.ts";
+import { solve } from "./solve";
 
 console.log(solve());
