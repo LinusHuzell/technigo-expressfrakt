@@ -7,6 +7,10 @@ export type ShippingResult = {
 
 const SHIPPING_METHODS: readonly ShippingMethod[] = ["standard", "express"];
 
+const STANDARD_SHIPPING_FEE = 59;
+const EXPRESS_SHIPPING_FEE = 99;
+const FREE_STANDARD_SHIPPING_FROM = 500;
+
 export class InvalidShippingMethodError extends Error {
   readonly method: unknown;
 
@@ -19,25 +23,39 @@ export class InvalidShippingMethodError extends Error {
   }
 }
 
+/**
+ * Calculates shipping and order total for a goods total.
+ *
+ * - An empty order (goods total 0) costs nothing, whatever the method.
+ * - Standard costs 59 kr, and is free from 500 kr.
+ * - Express always costs 99 kr. It never gets free shipping.
+ *
+ * Throws InvalidShippingMethodError for any method other than
+ * "standard" or "express", even for an empty order.
+ */
 export function calculateShipping(
   goodsTotal: number,
   method: ShippingMethod = "standard",
 ): ShippingResult {
+  // Validate first, so an unknown method fails even when the order is empty.
   if (!SHIPPING_METHODS.includes(method)) {
     throw new InvalidShippingMethodError(method);
   }
 
-  if (goodsTotal === 0) {
-    return { shipping: 0, total: 0 };
+  const shipping = shippingFee(goodsTotal, method);
+  return { shipping, total: goodsTotal + shipping };
+}
+
+function shippingFee(goodsTotal: number, method: ShippingMethod): number {
+  const isEmptyOrder = goodsTotal === 0;
+  if (isEmptyOrder) {
+    return 0;
   }
 
   if (method === "express") {
-    return { shipping: 99, total: goodsTotal + 99 };
+    return EXPRESS_SHIPPING_FEE;
   }
 
-  if (goodsTotal >= 500) {
-    return { shipping: 0, total: goodsTotal };
-  }
-
-  return { shipping: 59, total: goodsTotal + 59 };
+  const qualifiesForFreeShipping = goodsTotal >= FREE_STANDARD_SHIPPING_FROM;
+  return qualifiesForFreeShipping ? 0 : STANDARD_SHIPPING_FEE;
 }
