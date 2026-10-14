@@ -36,6 +36,7 @@ Goods total 0 kr → shipping 0 kr, total 0 kr
 Goods total 1 kr → shipping 59 kr, total 60 kr
 Goods total 499 kr → shipping 59 kr, total 558 kr
 Goods total 500 kr → shipping 0 kr, total 500 kr
+Goods total 501 kr → shipping 0 kr, total 501 kr
 ```
 
 Vill du testa andra belopp, ändra listan `examples` i `src/index.ts`.
@@ -47,7 +48,7 @@ npm test            # kör alla tester en gång
 npm run test:watch  # kör om testerna när filer ändras
 ```
 
-Testerna använder [Vitest](https://vitest.dev/) och finns i `src/shipping.test.ts`.
+Testerna använder [Vitest](https://vitest.dev/) och finns i `src/shipping.test.ts`. De kontrollerar fallen 0, 1, 499, 500 och 501 kr mot tabellen ovan.
 
 ## Projektstruktur
 
